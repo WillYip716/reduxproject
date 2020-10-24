@@ -4,8 +4,10 @@
   "description": "",
   "main": "src/server/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV=production node ./src/server/server.js"
+    "start": "NODE_ENV=production node ./src/server/server.js",
+    "server": "NODE_ENV=production node ./src/server/server.js",
+    "client": "npm start --prefix ./src/client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "",
   "license": "ISC",
