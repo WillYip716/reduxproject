@@ -1,4 +1,4 @@
-import { GET_ITEMS, ADD_ITEM, UPDATE_ITEM, DELETE_ITEM } from '../../types/types';
+import { GET_ITEMS, ADD_ITEM, UPDATE_ITEM, DELETE_ITEM } from '../types/types';
 
 // Action generators
 export const getItems = () => {
