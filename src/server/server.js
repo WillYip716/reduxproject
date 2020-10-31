@@ -26,7 +26,3 @@ if (process.env.NODE_ENV === 'production') {
       else res.redirect(`https://'${req.headers.host}${req.url}`);
     });
   }
-
-  app.use(express.static(PUBLIC_DIR));
-
-  app.listen(port, () => console.log(`App listening on port ${port}`));
