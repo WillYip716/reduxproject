@@ -1,18 +1,42 @@
 import React, { Component } from 'react';
-import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { connect } from 'react-redux';
+import { getItems } from './listactions';
 
 class List extends Component {
-  constructor(props) {
-    // need super to call the parent's class constructor
-    super(props);
-    this.state = {
+
+    componentDidMount = () => {
+        this.props.getItems();
     }
-  }render() {
-    return (
-      <Container>
-      </Container>
-    );
-  }
+
+    
+
+    render() {
+        const { items } = this.props.list;
+        const output = items.map(({id, name}) => (
+          <div key={id}>
+              {name}
+          </div>
+        ))
+        return (
+            <div>
+              <h1>items</h1>
+              {output}
+            </div>
+        );
+    }
 }
-export default List;
+
+const mapStateToProps = state => {
+    return {
+        // The name items is based on the name what you will define it in the reducer
+        list: state.list
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getItems
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(List);
