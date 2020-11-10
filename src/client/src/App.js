@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import Header from './components/header';
 import List from './components/list';
 import store from './store';
 import { Provider } from 'react-redux';
-import './App.css';
 
 
 class App extends Component {
@@ -15,7 +13,6 @@ class App extends Component {
     return (   
       <Provider store={store}>   
         <div>
-          <Header />
           <List />
         </div>
       </Provider>

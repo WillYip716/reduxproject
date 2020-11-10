@@ -1,11 +1,13 @@
-import { GET_ITEMS, ADD_ITEM, UPDATE_ITEM, DELETE_ITEM } from './types';
+import { GET_ITEMS, ADD_ITEM, UPDATE_ITEM, DELETE_ITEM, GET_ERRORS } from './types';
 import axios from "axios";
+
 
 
 export const getItems = () => dispatch => {
   axios
-     .get("/")
+     .get("/api")
      .then(res => {
+        console.log("res is" + res.data);
         dispatch({
            type: GET_ITEMS,
            payload: res.data
@@ -21,7 +23,7 @@ export const getItems = () => dispatch => {
 
 export const addItem = data => dispatch => {
   axios
-     .post("/",data)
+     .post("/api",data)
      .then(res => {
         dispatch({
            type: ADD_ITEM,
@@ -38,7 +40,7 @@ export const addItem = data => dispatch => {
 
 export const updateItem = (id,data) => dispatch => {
   axios
-     .put("/${id}", data)
+     .put("/api/" + id, data)
      .then(res => {
         dispatch({
            type: UPDATE_ITEM,
@@ -55,7 +57,7 @@ export const updateItem = (id,data) => dispatch => {
 
 export const deleteItem = id => dispatch => {
   axios
-     .delete("/${id}")
+     .delete("/api/"+id)
      .then(res => {
         dispatch({
            type: DELETE_ITEM,

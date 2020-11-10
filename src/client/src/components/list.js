@@ -1,42 +1,44 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getItems } from './listactions';
+import PropTypes from "prop-types";
 
 class List extends Component {
 
     componentDidMount = () => {
+        console.log("mounting");
         this.props.getItems();
     }
 
     
-
     render() {
-        const { items } = this.props.list;
-        const output = items.map(({id, name}) => (
-          <div key={id}>
+        const output = this.props.list.map(({id, name}) => (
+          <div key={id +Math.random()}>
               {name}
           </div>
         ))
         return (
             <div>
-              <h1>items</h1>
+              <h1>Items</h1>
               {output}
             </div>
         );
     }
 }
 
+
+
 const mapStateToProps = state => {
     return {
         // The name items is based on the name what you will define it in the reducer
-        list: state.list
+        list: state.list.items
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        getItems
-    }
-}
+List.propTypes = {
+    list: PropTypes.array.isRequired,
+    getItems: PropTypes.func.isRequired,
+ };
 
-export default connect(mapStateToProps, mapDispatchToProps)(List);
+export default connect(mapStateToProps, {getItems})(List);
+

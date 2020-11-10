@@ -4,5 +4,3 @@ import ListReducer from './listreducers';
 export default combineReducers({
     list: ListReducer
 })
-
-
