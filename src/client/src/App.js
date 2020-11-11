@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import List from './components/list';
 import store from './store';
 import { Provider } from 'react-redux';
+import AddList from './components/addlist';
 
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
     return (   
       <Provider store={store}>   
         <div>
+          <AddList/>
           <List />
         </div>
       </Provider>

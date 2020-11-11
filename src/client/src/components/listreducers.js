@@ -3,9 +3,9 @@ import uuid from 'uuid';
 
 const initialState = {
     items: [
-        { id: uuid(), name: 'Item 2' },
-        { id: uuid(), name: 'Item 3' },
-        { id: uuid(), name: 'Item 4' }
+        { _id: uuid(), name: 'Item 2' },
+        { _id: uuid(), name: 'Item 3' },
+        { _id: uuid(), name: 'Item 4' }
     ]
 };
 
@@ -15,11 +15,12 @@ export default (state = initialState, action) => {
             console.log("getting items")
             return {
                 ...state,
-                items: [...state.items, {id: action.payload._id, name: action.payload.name}]
+                items: [...state.items,  ...action.payload]
             }
         case ADD_ITEM:
             return {
-                ...state
+                ...state,
+                items: [...state.items,  action.payload]
             }
         case UPDATE_ITEM:
             return {

@@ -12,8 +12,8 @@ class List extends Component {
 
     
     render() {
-        const output = this.props.list.map(({id, name}) => (
-          <div key={id +Math.random()}>
+        const output = this.props.list.map(({_id, name}) => (
+          <div key={_id}>
               {name}
           </div>
         ))
